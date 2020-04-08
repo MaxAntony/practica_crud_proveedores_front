@@ -2,34 +2,29 @@ let providersList = document.getElementById('providersList');
 
 eventListeners();
 function eventListeners() {
+  // web loaded
   document.addEventListener('DOMContentLoaded', getProviders);
+  // add new provider
   document
     .querySelector('#providerForm')
     .addEventListener('submit', addProvider);
+
+  //delegator
+  document.addEventListener('click', clickOnDocument);
 }
 
-//
 async function getProviders(e) {
   try {
     const prom = await fetch('https://providercrud.herokuapp.com/');
     const providers = await prom.json();
     console.log(providers);
     providers.forEach(e => {
-      appendProvider(e);
+      appendProviderToDOM(e);
     });
   } catch (e) {
     console.log(e);
   }
 }
-
-// async function addProvider(provider) {
-//   try {
-//     let data = new FormData()
-//     data.append('photo')
-//   } catch (e) {
-
-//   }
-// }
 
 async function addProvider(e) {
   e.preventDefault();
@@ -53,16 +48,43 @@ async function addProvider(e) {
   } catch (e) {
     console.log(e);
   }
-  // document.getElementById("providerForm").submit();
 }
 
-function appendProvider(provider) {
+function clickOnDocument(e) {
+  if (e.target.classList.contains('btnDelete-provider')) {
+    deleteProviderFromDOM(e.target.parentElement);
+  }
+}
+
+function appendProviderToDOM(provider) {
   let li = document.createElement('li');
   let img = document.createElement('img');
+  let btnDelete = document.createElement('button');
+  btnDelete.innerText = 'eliminar';
+  btnDelete.classList.add('btnDelete-provider');
   img.src = provider.photo.imageURL;
   img.classList.add('providerImage');
   li.classList.add('list-group-item');
+  li.setAttribute('provider-id', provider._id);
   li.innerText = `${provider.firstName}`;
   li.appendChild(img);
+  li.appendChild(btnDelete);
   providersList.appendChild(li);
+}
+
+async function deleteProviderFromDOM(providerLi) {
+  const providerId = providerLi.attributes[1].value;
+  console.log(providerId);
+  try {
+    const res = await fetch(
+      `https://providercrud.herokuapp.com/${providerId}`,
+      {
+        method: 'DELETE',
+      },
+    );
+    console.log(res);
+    providerLi.remove();
+  } catch (e) {
+    console.log(e);
+  }
 }
