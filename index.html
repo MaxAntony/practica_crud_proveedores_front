@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProveedoresCRUD</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <span class="navbar-brand mb-0 h1">CRUD Proveedores</span>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <h3>Agregar proveedor</h3>
+          <form
+            enctype="multipart/form-data"
+            method="POST"
+            action="https://providercrud.herokuapp.com/"
+            id="providerForm"
+          >
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nombres</label>
+              <input
+                required
+                minlength="3"
+                type="text"
+                class="form-control"
+                id="firstName"
+                name="firstName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Apellidos</label>
+              <input
+                minlength="3"
+                required
+                type="text"
+                class="form-control"
+                id="lastName"
+                name="lastName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">dni</label>
+              <input
+                minlength="8"
+                maxlength="8"
+                required
+                type="text"
+                class="form-control"
+                id="dni"
+                name="dni"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Foto</label>
+              <input
+                required
+                type="file"
+                class="form-control-file"
+                id="photo"
+                name="photo"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+        <div class="col-8">
+          <ul id="providersList" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
