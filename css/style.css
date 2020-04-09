@@ -1,3 +1,8 @@
 .providerImage {
   width: 200px;
 }
+
+.edit-provider-img {
+  width: 200px;
+  padding-bottom: 10px;
+}

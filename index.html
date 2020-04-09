@@ -57,6 +57,7 @@
                   <input
                     minlength="8"
                     maxlength="8"
+                    pattern="[0-9]{8}"
                     required
                     type="text"
                     class="form-control"
@@ -81,7 +82,119 @@
         </div>
         <div class="col-8">
           <h4>Lista de Proveedores</h4>
-          <ul id="providersList" class="list-group"></ul>
+          <div id="providersList" class="row"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="editProviderModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar proveedor</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              id="close-modal"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              enctype="multipart/form-data"
+              method="POST"
+              action="https://providercrud.herokuapp.com/"
+              id="editProviderForm"
+            >
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nombres</label>
+                <input
+                  required
+                  minlength="3"
+                  type="text"
+                  class="form-control"
+                  id="firstName"
+                  name="firstName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Apellidos</label>
+                <input
+                  minlength="3"
+                  required
+                  type="text"
+                  class="form-control"
+                  id="lastName"
+                  name="lastName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">dni</label>
+                <input
+                  minlength="8"
+                  maxlength="8"
+                  pattern="[0-9]{8}"
+                  required
+                  type="text"
+                  class="form-control"
+                  id="dni"
+                  name="dni"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Foto</label>
+                <hr />
+                <img class="edit-provider-img" src="" />
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="photo"
+                  name="photo"
+                />
+              </div>
+              <button
+                type="button"
+                class="btn btn-secondary mr-3"
+                data-dismiss="modal"
+              >
+                cerrar
+              </button>
+              <button
+                type="submit"
+                id="btnUpdateProvider"
+                class="btn btn-primary"
+              >
+                guardar cambios
+              </button>
+            </form>
+          </div>
+          <!-- <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              cerrar
+            </button>
+            <button
+              type="button"
+              id="btnUpdateProvider"
+              class="btn btn-primary"
+            >
+              guardar cambios
+            </button>
+          </div> -->
         </div>
       </div>
     </div>
